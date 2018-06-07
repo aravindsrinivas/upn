@@ -45,7 +45,7 @@ class IMP(object):
         self.atT_original = tf.placeholder(tf.float32, [None, inner_horizon, act_dim], name='atT_0')
         self.og = tf.placeholder(tf.float32, [None, img_w, img_h, img_c], name = 'og')
         self.atT_target = tf.placeholder(tf.float32, [None, inner_horizon, act_dim], name='atT_target')
-        #self.qt = tf.placeholder(tf.float32, [None, joint_dim], name='qt')
+        self.qt = tf.placeholder(tf.float32, [None, joint_dim], name='qt')
         self.plan_loss_mask = tf.placeholder(tf.float32, [None, inner_horizon], name='mask')
         self.eff_horizons = tf.placeholder(tf.int32, [None], name='eff_horizons')
 
@@ -88,7 +88,7 @@ class IMP(object):
                                      #nonlinearity='swish', 
                                      reuse=True)
 
-                 #xt = tf.concat([xt, self.qt], axis=1)
+                 xt = tf.concat([xt, self.qt], axis=1)
 
                 if bias_transform:
                             bias_transform = tf.get_variable('bias_transform',
@@ -438,6 +438,7 @@ class IMP(object):
         weight_dump = dict(zip(weight_names, weight_values))
         return weight_dump
 
+# Potentially an old code-check test. So, might not work. But this isn't relevant. It was just for debugging purposes.
 if __name__ == '__main__':
      
     horizon = 5
