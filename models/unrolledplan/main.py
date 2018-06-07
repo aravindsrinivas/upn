@@ -5,7 +5,7 @@ import pickle
 import time
 import argparse
 import os
-from upn.models.unrolledplan.model import IMP
+from models.unrolledplan.model import IMP
 # only for GPU instances, comment it out otherwise
 os.environ["CUDA_VISIBLE_DEVICES"] = str(utils.pick_gpu_lowest_memory())
 
@@ -100,11 +100,12 @@ def main():
     sess = tf.Session()
 
     if args.task == 'pointmass':
-        train_data_path = '/z/aravind/pointmass_obstacles_data/'
+        train_data_path = #YOUR TRAINING DATA PATH GOES HERE #
         act_scale_coeff = 1.
+        #train_data_path = '/z/aravind/pointmass_obstacles_data/'
 
     elif args.task == 'reacher':
-        train_data_path = '/z/aravind/reacher_obstacles_data/'
+        train_data_path = # YOUR TRAINING DATA PATH GOES HERE #
         act_scale_coeff = 3.
 
     all_imgs = pickle.load(open(train_data_path + 'imgs.pkl', 'rb'))
