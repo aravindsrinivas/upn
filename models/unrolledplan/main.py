@@ -102,7 +102,6 @@ def main():
     if args.task == 'pointmass':
         train_data_path = #YOUR TRAINING DATA PATH GOES HERE #
         act_scale_coeff = 1.
-        #train_data_path = '/z/aravind/pointmass_obstacles_data/'
 
     elif args.task == 'reacher':
         train_data_path = # YOUR TRAINING DATA PATH GOES HERE #
